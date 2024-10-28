@@ -10,6 +10,7 @@ export type SearchParams = {
 }
 const searchInput = ({ placeholder }: SearchProps) => {
   const searchParams = useSearchParams() ?? ''
+  const params = new URLSearchParams(searchParams)
   const pathname = usePathname()
   const { replace } = useRouter()
   const search = async (formData: any) => {
@@ -24,7 +25,6 @@ const searchInput = ({ placeholder }: SearchProps) => {
     console.log(data)
 
     const value = formData.get('query')
-    const params = new URLSearchParams(searchParams)
 
     if (value) {
       params.set('query', value)
@@ -45,10 +45,11 @@ const searchInput = ({ placeholder }: SearchProps) => {
         placeholder={placeholder}
         name="query"
         type="search"
+        defaultValue={params.get('query') ?? ''}
       ></input>
-      <button type="submit" onSubmit={search}>
+      {/* <button type="submit" onSubmit={search}>
         Search
-      </button>
+      </button> */}
     </form>
   )
 }

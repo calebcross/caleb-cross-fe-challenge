@@ -8,6 +8,7 @@ const handler: NextApiHandler = async (req, res) => {
       if (!query) res.status(400).end()
       const data = await searchQuery(query)
       res.status(200).json(data)
+
       break
     }
     default: {

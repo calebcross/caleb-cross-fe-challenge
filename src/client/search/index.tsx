@@ -7,7 +7,7 @@ export enum sortByEnum {
   RELEVANCE = 'relevance',
 }
 export async function searchQuery(
-  query: string | FormDataEntryValue | null,
+  query: string | string[],
   sortBy?: sortByEnum
 ) {
   if (!query) return

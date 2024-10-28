@@ -1,7 +1,6 @@
 .root {
-  position: sticky;
-  top: 0;
-  background-color: #000000;
+  pdisplay: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
   @media (min-width: 1024px) {
     display: flex;

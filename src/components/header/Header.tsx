@@ -1,9 +1,19 @@
+import { Logo } from '../Icons/Logo'
+import { MenuIcon } from '../Icons/MenuIcon'
 import SearchInput from '../searchInput'
 import styles from './Header.module.css'
 const Header = () => {
   return (
     <nav className={styles.root}>
-      <SearchInput placeholder="Search by Brand, Product or Category" />
+      <div className={styles.navContainer}>
+        <div className={styles.leftContainer}>
+          <MenuIcon />
+        </div>
+        <a href="/" className={styles.middleContainer}>
+          <Logo />
+        </a>
+        <div></div>
+      </div>
     </nav>
   )
 }
