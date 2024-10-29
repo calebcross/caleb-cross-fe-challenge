@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   background-color: #000000;
-
+  font-family: 'Montserrat', sans-serif;
 }
 
 .buttonContainer {
@@ -24,6 +24,122 @@
   border-right: 0;
   border-bottom: 0;
 }
+
+.button span {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+  color: #232a31;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.42px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.list {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 500;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  margin-top: 0.5rem;
+  max-height: 30rem;
+  transition: max-height 0.3s ease-in-out;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 16px;
+}
+.item {
+  font-style: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+  color: #000;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+.label {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #232a31;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.labelname {
+  cursor: pointer;
+  color: #232a31;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.checkbox {
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1.5px solid #6e7780;
+  -webkit-appearance: none;
+  background-color: #fff;
+  display: inline-block;
+  position: relative;
+}
+
+.checkbox:checked {
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1.5px solid #000000;
+  -webkit-appearance: none;
+  background-color: #000000;
+  display: inline-block;
+  position: relative;
+}
+
+.checkbox :after {
+}
 .iconContainer {
 }
 
@@ -38,7 +154,7 @@
 
 .open {
   opacity: 100%;
-  max-height: 4000px;
+  max-height: 800px;
 }
 
 .closed {

@@ -1,7 +1,8 @@
 'use client'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useState } from 'react'
 import { SearchIcon } from '../Icons/SearchIcon'
 import styles from './SearchInput.module.css'
+import { parseAsString, useQueryState } from 'nuqs'
 type SearchProps = {
   placeholder: string
 }
@@ -9,48 +10,29 @@ export type SearchParams = {
   search: string
 }
 const searchInput = ({ placeholder }: SearchProps) => {
-  const searchParams = useSearchParams() ?? ''
-  const params = new URLSearchParams(searchParams)
-  const pathname = usePathname()
-  const { replace } = useRouter()
-  const search = async (formData: any) => {
-    const results = await fetch(`/api/search`, {
-      method: 'POST',
-      body: JSON.stringify({ query: formData.get('query') }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    const data = await results.json()
-    console.log(data)
+  const [query, setQuery] = useQueryState(
+    'query',
+    parseAsString.withDefault('').withOptions({ shallow: false })
+  )
+  const [inputState, setInputState] = useState('')
 
-    const value = formData.get('query')
-
-    if (value) {
-      params.set('query', value)
-    } else {
-      params.delete('query')
-    }
-
-    replace(`${pathname}?${params.toString()}`, {
-      scroll: false,
-    })
-  }
   return (
-    <form className={styles.root} action={search} id="searchform">
-      <SearchIcon className={styles.searchIcon} />
-      <input
-        id="searchInput"
-        className={styles.searchInput}
-        placeholder={placeholder}
-        name="query"
-        type="search"
-        defaultValue={params.get('query') ?? ''}
-      ></input>
-      {/* <button type="submit" onSubmit={search}>
-        Search
-      </button> */}
-    </form>
+    <div className={styles.root}>
+      <form
+        className={styles.form}
+        onSubmit={() => setQuery(inputState || null)}
+      >
+        <input
+          id="searchInput"
+          className={styles.searchInput}
+          placeholder={placeholder}
+          name="query"
+          type="search"
+          defaultValue={query}
+          onChange={(e) => setInputState(e.target.value)}
+        ></input>
+      </form>
+    </div>
   )
 }
 

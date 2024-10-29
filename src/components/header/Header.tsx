@@ -1,6 +1,6 @@
 import { Logo } from '../Icons/Logo'
 import { MenuIcon } from '../Icons/MenuIcon'
-import SearchInput from '../searchInput'
+import SearchInput from '../SearchInput'
 import styles from './Header.module.css'
 const Header = () => {
   return (

@@ -5,6 +5,8 @@
 .top {
   display: grid;
   grid-template-columns: 8fr 1fr;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: capitalize;
 }
 
 .bottom {

@@ -1,19 +1,15 @@
 import { NEXT_SEARCH_API_KEY, SEARCH_API_URL } from '@/config/constants'
+import { sortByEnum } from '@/types/apiTypes'
 
-export enum sortByEnum {
-  ASC = 'lowPrice',
-  DESC = 'highPrice',
-  NEWEST = 'newest',
-  RELEVANCE = 'relevance',
-}
 export async function searchQuery(
   query: string | string[],
-  sortBy?: sortByEnum
+  sortBy?: string | string[]
 ) {
-  if (!query) return
+    if (!query) return
+    const sortKey = sortBy as keyof typeof sortByEnum
   const requiredBody = {
     query: query,
-    sortBy: sortBy ?? sortByEnum.RELEVANCE,
+    sortBy: sortKey ? sortBy : sortByEnum.RELEVANCE,
   }
   const options = {
     method: 'POST',
@@ -31,7 +27,6 @@ export async function searchQuery(
     if (response.status != 200) {
       console.error(searchResponse)
       throw new Error('search API failed')
-      //throw searchResponse?.errors
     }
     return searchResponse
   } catch (error) {

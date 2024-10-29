@@ -1,8 +1,8 @@
 import ThreeByOneGrid from '@/components/ThreeByOneGrid'
 import styles from './Home.module.css'
-import { AppContext } from 'next/app'
-import Results from '@/components/Results'
 import { searchQuery } from '@/client/search'
+import SearchPage from './search/page'
+import { sortByEnum } from '@/types/apiTypes'
 
 export default async function Page({
   params,
@@ -11,14 +11,18 @@ export default async function Page({
   params: Promise<{ slug: string }>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-    const { page = '1', sort = 'asc', query = '' } = await searchParams
-    
-    const results = await searchQuery(query)
+  const {
+    categories = '',
+    brands = '',
+    query = '',
+    sort = sortByEnum.RELEVANCE,
+  } = await searchParams
+  const results = await searchQuery(query, sort)
 
   return (
     <div>
       <div className={styles.root}>
-        {query ? <Results results={results} /> : <ThreeByOneGrid />}
+        {query ? <SearchPage results={results} /> : <ThreeByOneGrid />}
       </div>
     </div>
   )
