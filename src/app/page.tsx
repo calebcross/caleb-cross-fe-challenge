@@ -1,8 +1,8 @@
 import ThreeByOneGrid from '@/components/ThreeByOneGrid'
 import styles from './Home.module.css'
 import { searchQuery } from '@/client/search'
-import SearchPage from './search/page'
 import { sortByEnum } from '@/types/apiTypes'
+import Results from '@/components/Results'
 
 export default async function Page({
   params,
@@ -22,7 +22,7 @@ export default async function Page({
   return (
     <div>
       <div className={styles.root}>
-        {query ? <SearchPage results={results} /> : <ThreeByOneGrid />}
+        {query ? <Results results={results} /> : <ThreeByOneGrid />}
       </div>
     </div>
   )
